@@ -7,27 +7,25 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import { createContext, useEffect, useState } from "react";
 import axios from "axios";
-import { set } from "msw/lib/types/context";
 
-export const CurrentUserContext = createContext()
-export const setCurrentUserContext = createContext()
-
+export const CurrentUserContext = createContext();
+export const SetCurrentUserContext = createContext();
 
 function App() {
-  const [currentUser, setCurrentUser] = useState(null)
+  const [currentUser, setCurrentUser] = useState(null);
 
   const handleMount = async () => {
     try {
-      const {data} = await axios.get('dj-rest-auth/user/')
-      setCurrentUser(data)
-    } catch(err){
-      console.log(err)
+      const { data } = await axios.get("dj-rest-auth/user/");
+      setCurrentUser(data);
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
-    handleMount()
-  }, [])
+    handleMount();
+  }, []);
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
