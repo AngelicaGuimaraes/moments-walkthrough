@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 
 import Form from "react-bootstrap/Form";
@@ -17,7 +17,7 @@ import appStyles from "../../App.module.css";
 import { SetCurrentUserContext } from "../../App";
 
 function SignInForm() {
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
